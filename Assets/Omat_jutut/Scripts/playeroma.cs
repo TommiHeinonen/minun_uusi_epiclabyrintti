@@ -23,19 +23,24 @@ public class playeroma : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal") * 5;
         float vertical = Input.GetAxis("Vertical") * 5;
         Vector3 nopeus = new Vector3(horizontal, 0, vertical);
-        hahmokontrolleri.Move(nopeus * Time.deltaTime);
+	  
 		
 		
 		horisontaalinenPyorinta += Input.GetAxis("Mouse X");
 		
         transform.localRotation = Quaternion.Euler(0, horisontaalinenPyorinta, 0);
+		
+		  nopeus = transform.rotation * nopeus;
+        hahmokontrolleri.Move(nopeus * Time.deltaTime);
+		
+		
            if (Input.GetAxis("Vertical") != 0)
 		   { 
-		       anim.SetBool("walk1", true); 
+		       anim.SetBool("walk", true); 
 		   } 
 		   else 
 		   { 
-		      anim.SetBool("walk1", false);
+		      anim.SetBool("walk", false);
 			  
 	       }
 	}
